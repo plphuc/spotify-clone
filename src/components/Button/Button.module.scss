@@ -1,0 +1,58 @@
+.wrapper {
+  border-radius: 500px;
+  min-block-size: 32px;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+  background-color: rgb(240, 240, 240);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  pointer-events: auto;
+
+  &:disabled {
+    pointer-events: none;
+  }
+}
+
+.icon + .title,
+.title + .icon {
+  margin-left: 5px;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-family: var(--font-family);
+
+  display: flex;
+  gap: 8px;
+}
+
+.inheritColor {
+  background-color: inherit;
+  fill: var(--text-main-color);
+  color: var(--text-main-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.outline {
+  border: 1px solid var(--essential-subdued, #878787);
+}
+
+.zoominHover {
+  transition: transform 0.1s; /* Animation */
+  &:hover {
+    transform: scale(1.07);
+  }
+}
+

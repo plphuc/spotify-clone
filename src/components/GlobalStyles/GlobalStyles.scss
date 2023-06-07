@@ -1,0 +1,135 @@
+@import 'normalize.css';
+
+:root {
+    --font-family: 'CircularSp', sans-serifs;
+
+    --primary-background-color: rgb(18,18,18);
+    --background-primary: #1ed760;
+    --background-fb: #405A93;
+    --text-base: #535353;
+    --text-active-color: rgb(255, 255, 255);
+    --text-desc-color: rgb(179, 179, 179);
+    --text-main-color: rgb(255, 255, 255);
+    --essential-base: #ffffff;
+    --background-base: #121212;
+    --essential-subdued: #727272;
+    --essential-bright-accent: #1ed760;
+    --text-bright-accent: #117a37;
+    
+    --left-sidebar-width: 283px;
+    --header-height: 64px;
+    --footer-height: 72px;
+    --left-sidebar-padding-right: 24px;
+    --left-sidebar-padding-left: 24px;
+
+    --background-noise: url('/assets/images/empty.svg')
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizespeed;
+    color: var(--text-main-color);
+    overflow-y: overlay;
+}
+
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-main-color);
+}
+
+svg {
+    height: 100%;
+}
+// Scrollbar
+html *::-webkit-scrollbar {
+
+    border-radius: 0;
+    width: 8px;
+
+}
+html *::-webkit-scrollbar-thumb {
+
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, .06);
+
+}
+html *::-webkit-scrollbar-track {
+
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+
+}
+
+//  Font 
+@font-face  {
+    font-family: CircularSp;
+    src: url('/assets/fonts/CircularSp-Bold-fe1cfc14b7498b187c78fa72fb72d148.woff2');
+    font-weight: 700;
+}
+
+@font-face  {
+    font-family: CircularSp;
+    src: url('/assets/fonts/CircularSp-Book-4eaffdf96f4c6f984686e93d5d9cb325.woff2');
+    font-weight: 500;
+}
+
+@font-face  {
+    font-family: CircularSpTitle;
+    src: url('/assets/fonts/CircularSpTitle-Bold-2fbf72b606d7f0b0f771ea4956a8b4d6.woff2');
+    font-weight: 500;
+}
+
+@font-face  {
+    font-family: CircularSpTitleBlack;
+    src: url('/assets/fonts/CircularSpTitle-Black-3f9afb402080d53345ca1850226ca724.woff2');
+    font-weight: 500;
+}
+
+@font-face  {
+    font-family: CircularSpTallBold;
+    src: url('/assets/fonts/CircularSpTitle-Tall-Bold-69995af8079e90f1d15130df13ad0c60.woff2');
+    font-weight: 500;
+}
+
+.google-icon {
+    background: url("https://accounts.scdn.co/sso/images/new-google-icon.72fd940a229bc94cf9484a3320b3dccb.svg")
+        center center no-repeat;
+}
+
+.fb-icon {
+    background: url("https://accounts.scdn.co/sso/images/new-facebook-icon.eae8e1b6256f7ccf01cf81913254e70b.svg")
+        center center no-repeat;
+}
+
+.apple-icon {
+    background: url("https://accounts.scdn.co/sso/images/new-apple-icon.e356139ea90852da2e60f1ff738f3cbb.svg")
+        center center no-repeat;
+}
+
+
+.logo-24 {
+    width: 2.4rem;
+    height: 2.4rem;
+    display: block;
+}
+

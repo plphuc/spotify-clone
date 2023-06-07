@@ -1,0 +1,144 @@
+.wrapper {
+    --section-width: 324px;
+
+    max-width: 734px;
+    border-radius: 8px;
+    width: 100%;
+    background-color: black;
+    color: white;
+
+}
+
+.container {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 8px;
+
+    > hr {
+        margin: 32px 100px;
+        border-right: none;
+        border-bottom: none;
+        border-left: none;
+        border-top: 1px solid rgb(41, 41, 41);
+    }
+}
+
+.title {
+    text-align: center;
+    margin: 80px 0px 48px;
+    font-size: 4.8rem;
+}
+
+.login-section {
+    width: var(--section-width);
+    margin: 0px auto;
+}
+
+.login-opt {
+    width: 100%;
+}
+
+.login-opt-btn {
+    width: 100%;
+    padding: 7px 31px;
+    margin-bottom: 8px;
+    min-block-size: 48px !important;
+
+    &:hover {
+        border-color: var(--essential-base, #000000);
+    }
+}
+
+.title-btn {
+    margin: auto !important;
+    font-size: 1.6rem;
+}
+
+
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 16px;
+}
+
+.title-input {
+    font-size: 1.4rem;
+    padding-bottom: 8px;
+}
+
+.input-section {
+    width: 100%;
+    min-block-size: 48px;
+    padding-block-start: 8px;
+    padding-block-end: 8px;
+    padding-inline: 14px;
+    border-radius: 4px;
+
+    font-size: 1.6rem; 
+    font-family: var(--font-family);
+    background-color: var(--background-base);
+    color: var(--text-main-color);
+    box-shadow: inset 0 0 0 1px var(--essential-subdued,#878787);
+
+    &:focus {
+        box-shadow: inset 0 0 0 3px var(--essential-base,#000000);
+    }
+}
+
+.input-password {
+    --password-right: 12px;
+    position: relative;
+
+    & .eye-btn {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: var(--password-right);
+        color: var(--text-desc-color);
+
+        &:hover {
+            color: var(--text-main-color);
+        }
+    }
+
+    & input {
+        padding-right: calc(var(--password-right)*2 + 24px);
+    }
+}
+
+.login-btn-wrapper {
+    padding: 32px 0px;
+
+}
+.login-btn {
+    width: 100%;
+    min-block-size: 48px !important;
+    background-color: var(--background-primary) !important;
+}
+
+.forgot-opt-wrapper {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+}
+
+.signup-section {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 48px;
+}
+.signup-section > h2 {
+    font-size: 1.6rem;
+    color: var(--text-desc-color);
+    & a {
+        margin-left: 8px;
+
+        &:hover {
+            color: var(--essential-bright-accent);
+        }
+    }
+}

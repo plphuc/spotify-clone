@@ -1,0 +1,33 @@
+.wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-background-color);
+}
+
+.info-wrapper {
+    display: flex;
+}
+
+.info-image {
+border-radius: 4px;
+}
+
+.info-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 0 8px;
+}
+
+.info-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-icon + .info-icon {
+    padding-inline: 16px;
+}

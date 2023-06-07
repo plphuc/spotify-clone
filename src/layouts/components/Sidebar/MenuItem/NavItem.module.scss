@@ -1,0 +1,34 @@
+.nav-item {
+    height: 40px;
+    padding: 0 var(--left-sidebar-padding-right) 0
+        var(--left-sidebar-padding-left);
+    color: var(--text-desc-color);
+
+    cursor: pointer;
+
+    display: flex;
+    gap: 16px;
+    transition: 0.5s cubic-bezier(0.3, 0, 0.4, 1);
+
+    &.active {
+        color: var(--text-main-color);
+        .active-icon {
+            display: block;
+        }
+
+        .icon {
+            display: none;
+        }
+    }
+
+    &:hover {
+        color: var(--text-main-color);
+    }
+}
+
+.icon {
+    display: block;
+}
+.active-icon {
+    display: none;
+}

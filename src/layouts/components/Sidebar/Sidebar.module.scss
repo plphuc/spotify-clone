@@ -1,0 +1,94 @@
+.wrapper {
+  height: 100%;
+  width: var(--left-sidebar-width);
+  background-color: var(--primary-background-color);
+  padding-top: 24px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-wrapper {
+  margin-bottom: 18px;
+  padding: 0 24px;
+  display: flex;
+}
+
+.logo {
+  height: 40px;
+  max-width: 131px;
+  width: 100%;
+
+  flex: 1;
+}
+
+.nav-link {
+  color: var(--text-desc-color);
+}
+
+.actions {
+  margin-top: 24px;
+  flex: 1;
+}
+.action {
+  padding: 8px var(--left-sidebar-padding-right) 8px
+    var(--left-sidebar-padding-left);
+  color: var(--text-desc-color);
+  display: flex;
+
+  cursor: pointer;
+
+  transition: 0.5s cubic-bezier(0.3, 0, 0.4, 1);
+
+  &:hover {
+    color: var(--text-main-color);
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  padding: 4px;
+  border-radius: 2px;
+  margin-right: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.liked-icon {
+  background: linear-gradient(135deg, #450af5, #c4efd9);
+}
+
+.wrapper-infos {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding: 0 var(--left-sidebar-padding-right) 0
+    var(--left-sidebar-padding-left);
+}
+
+.infos {
+  display: flex;
+  flex-wrap: wrap;
+}
+.info-item > a {
+  margin-right: 16px;
+  color: var(--text-desc-color);
+  font-size: 1.1rem;
+}
+
+.underline {
+  &:hover {
+    text-decoration: underline var(--text-desc-color);
+  }
+}
+
+.language {
+  padding: 0 var(--left-sidebar-padding-right) 0 var(--left-sidebar-padding-left);
+  margin-bottom: 32px;
+  >*:hover {
+    border: 1px solid var(--text-main-color);
+  }
+}

@@ -98,6 +98,7 @@
         color: var(--text-bright-accent);
         text-decoration: underline;
         display: flex;
+        width: fit-content;
     }
 }
 
@@ -134,13 +135,15 @@
 
 .down-arrow-icon {
     position: absolute;
+    top: 0;
     right: 14px;
     color: var(--essential-subdued);
     pointer-events: none;
 }
 
-input[type="text"],
+.input-item,
 select {
+    display: block;
     width: 100%;
     box-shadow: inset 0 0 0 1px var(--essential-subdued);
     border-radius: 4px;
@@ -181,6 +184,26 @@ select {
     }
 }
 
+// Password
+
+.pw-container {
+    position: relative;
+    & .eye-pw {
+        height: 100%;
+        cursor: pointer;
+        color: var(--text-desc-color);
+
+        position: absolute;
+        right: 12px;
+        top: 0;
+
+        &:hover {
+            color: var(--text-color);
+            scale: 1.1;
+        }
+    }
+}
+
 .gender-info {
     min-block-size: 25px;
     display: flex;
@@ -192,22 +215,69 @@ select {
     width: 16px;
     height: 16px;
     display: inline-block;
+    position: relative;
+}
+
+.checked-button {
+    background-color: var(--text-bright-accent);
+}
+
+.radio-input {
+    &:checked + label .button-radio {
+        background-color: var(--text-bright-accent);
+    }
+
+    &:checked + label .button-radio::before {
+        content: "";
+        block-size: 8px;
+        inline-size: 8px;
+        border-radius: 50%;
+        background-color: white;
+
+        top: 50%;
+        transform: translateY(-50%) translateX(50%);
+        right: 50%;
+
+        position: absolute;
+    }
 }
 
 .agree-item {
     display: flex;
-    padding-bottom: 24px;
+    margin-bottom: 24px;
 
     & input {
         height: 1px;
         width: 1px;
     }
+}
 
-    & label {
-        display: flex;
-        align-items: baseline;
-        text-align: left;
+.input-agree {
+    &:checked + .label-agree .checkbox {
+        background-color: var(--text-bright-accent);
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            border-color: var(--text-main-color);
+            block-size: 5px;
+            inline-size: 9px;
+            transform: translate3d(-50%, -50%, 0px) rotate(-45deg);
+            border-bottom-width: 2px;
+            border-bottom-style: solid;
+            border-left-width: 2px;
+            border-left-style: solid;
+            top: 40%;
+            left: 50%;
+        }
     }
+}
+
+.label-agree {
+    display: flex;
+    align-items: baseline;
+    text-align: left;
 }
 
 .checkbox {
@@ -238,7 +308,6 @@ select {
 
 .signup-btn-wrapper {
     display: flex;
-
 }
 
 .signup-btn {
@@ -246,20 +315,35 @@ select {
     min-block-size: 56px;
     padding-inline: 48px;
     margin-bottom: 24px;
-    
+
     & span {
         font-size: 1.8rem;
     }
 }
 
 .login-opt {
-
     & p {
         display: inline-block;
     }
-    
+
     & a {
         text-decoration: underline;
         color: var(--text-bright-accent);
     }
+}
+
+select option {
+    padding: 10rem;
+    color: var(--text-color);
+    &:disabled {
+        color: var(--text-desc-color);
+    }
+}
+
+.border-invalid {
+    border: 1px solid var(--text-negative);
+}
+
+.month-info select:invalid {
+    color: red;
 }

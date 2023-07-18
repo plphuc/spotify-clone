@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    color: var(--text-negative);
+    margin-top: 8px;
+    gap: 4px;
+
+    & a {
+        color: inherit !important;
+    }
+
+    & span {
+        line-height: 1;
+    }
+}

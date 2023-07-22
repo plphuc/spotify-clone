@@ -14,6 +14,7 @@ export default function MainLayout({ children }) {
     function handleOnScroll(e) {
         $("#header-wrapper").style.opacity = e.target.scrollTop / 300;
     }
+
     return (
         <div className={cx("wrapper")}>
             <div className={cx("sidebar-wrapper")}>

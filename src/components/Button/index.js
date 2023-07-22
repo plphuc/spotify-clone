@@ -57,6 +57,7 @@ export default function Button({
     Comp = 'a';
     props.href = href;
   }
+
   return (
     <Comp className={classes} {...props} disabled = {disabled}>
       {leftIcon && <span className={classNames(styles.icon)}>{leftIcon}</span>}

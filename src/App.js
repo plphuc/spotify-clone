@@ -1,11 +1,16 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import { Fragment } from 'react';
+import { createContext, useState } from 'react';
 
 import './App.css';
 import { publicRoutes } from './routes';
 import MainLayout from './layouts/MainLayout/MainLayout';
-import { Fragment } from 'react';
 
+
+const apiProvider = createContext()
 function App() {
+  const [spotify, setSpotify] = useState(null)
+
   return (
     <Router>
         <div className="App">
@@ -24,9 +29,9 @@ function App() {
                   key={index}
                   path={route.path} 
                   element={
-                    <Layout>
-                      <Page/>
-                    </Layout>
+                      <Layout>
+                        <Page/>
+                      </Layout>
                   }
                 />
               )

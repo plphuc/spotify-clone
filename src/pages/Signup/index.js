@@ -1,9 +1,10 @@
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-import config from "~/config";
 import styles from "./Signup.module.scss";
 import Validator from "~/utils/validator";
+import { routes } from "~/routes";
 import {
     BlindIcon,
     DownArrowIcon,
@@ -13,7 +14,6 @@ import {
     LogoIcon,
 } from "~/components/Icons";
 import Button from "~/components/Button";
-import { useEffect, useState } from "react";
 const cx = classNames.bind(styles);
 
 const monthNames = [
@@ -84,7 +84,7 @@ export default function Signup() {
         <div className={cx("wrapper")}>
             <form id="signup-form" className={cx("container")}>
                 <div className={cx("logo-container")}>
-                    <Link to={config.routes.home} className={cx("logo")}>
+                    <Link to={routes.home} className={cx("logo")}>
                         <LogoIcon />
                     </Link>
                     <h2>Sign up for free to start listening.</h2>

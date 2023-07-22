@@ -58,9 +58,6 @@ a {
     color: var(--text-main-color);
 }
 
-svg {
-    height: 100%;
-}
 // Scrollbar
 html *::-webkit-scrollbar {
 
@@ -134,3 +131,7 @@ html *::-webkit-scrollbar-track {
     display: block;
 }
 
+.inline-icon {
+    display: flex;
+    align-items: center;
+}

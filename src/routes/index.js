@@ -1,4 +1,3 @@
-import config from '~/config';
 import LoginLayout from '~/layouts/LoginLayout/LoginLayout';
 // Pages
 import Home from '~/pages/Home/';
@@ -8,16 +7,25 @@ import Search from '~/pages/Search';
 import LogIn from '~/pages/LogIn';
 import Signup from '~/pages/Signup';
 
+const routes = {
+    home: '/',
+    search: '/search',
+    user: '/user/:userId',
+    playlist: '/playlist/:playlistId',
+    login: '/login',
+    signup: '/signup'
+}
+
 // Public routes
 const publicRoutes = [
-    { path: config.routes.home, component: Home},
-    { path: config.routes.profile, component: Profile },
-    { path: config.routes.playlist, component: Playlist },
-    { path: config.routes.search, component: Search },
-    { path: config.routes.login, component: LogIn, layout: LoginLayout},
-    { path: config.routes.signup, component: Signup, layout: null}
+    { path: routes.home, component: Home},
+    { path: routes.profile, component: Profile },
+    { path: routes.playlist, component: Playlist },
+    { path: routes.search, component: Search },
+    { path: routes.login, component: LogIn, layout: LoginLayout},
+    { path: routes.signup, component: Signup, layout: null}
 ];
 
 const privateRoutes = [];
 
-export { publicRoutes, privateRoutes };
+export { routes, publicRoutes, privateRoutes };

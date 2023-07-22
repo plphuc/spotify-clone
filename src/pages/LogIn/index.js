@@ -1,11 +1,12 @@
 import classNames from "classnames/bind";
+import { useEffect, useState } from "react";
 
 import styles from "./Login.module.scss";
 import Button from "~/components/Button";
 import { BlindIcon, EyeIcon } from "~/components/Icons";
 import SwitchButton from "~/components/SwitchButton";
 import Validator from "~/utils/validator";
-import { useEffect, useState } from "react";
+import { loginUri } from "~/utils/connector/config";
 
 const cx = classNames.bind(styles);
 
@@ -122,7 +123,7 @@ export default function LogIn() {
 
                                 placeholder="Password"
                             />
-                            <div className={cx("eye-btn")} onClick={handleShowPw}>
+                            <div className={cx("eye-btn", "inline-icon")} onClick={handleShowPw}>
                                 {showPw ? <EyeIcon /> : <BlindIcon/>}
                             </div>
                         </div>
@@ -134,6 +135,9 @@ export default function LogIn() {
                     </div>
                     <div className={cx("login-btn-wrapper")}>
                         <Button children="Log in" className={cx('login-btn')}/>
+
+                        {/* Auto login */}
+                        <Button children="Log in with Spotify" className={cx('login-btn')} href={loginUri}/>
                     </div>
                     <div className={cx('forgot-opt-wrapper')}><a className={cx("forgot-opt")} href='/'>Forgot your password?</a></div>
                 </form>

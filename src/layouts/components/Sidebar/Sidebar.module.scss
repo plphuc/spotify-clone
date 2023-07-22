@@ -9,7 +9,7 @@
 }
 
 .logo-wrapper {
-  margin-bottom: 18px;
+  margin-bottom: 35px;
   padding: 0 24px;
   display: flex;
 }
@@ -28,7 +28,6 @@
 
 .actions {
   margin-top: 24px;
-  flex: 1;
 }
 .action {
   padding: 8px var(--left-sidebar-padding-right) 8px
@@ -91,4 +90,13 @@
   >*:hover {
     border: 1px solid var(--text-main-color);
   }
+}
+
+.playlist {
+  padding: 8px var(--left-sidebar-padding-right) 8px
+    var(--left-sidebar-padding-left);
+}
+
+.language-btn {
+  padding-inline: 7px;
 }

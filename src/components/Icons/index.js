@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 export const LogoIcon = ({ className }) => (
-    <svg viewBox="0 0 1134 340" className={classNames(className)}>
+    <svg viewBox="0 0 1134 340" className={classNames(className)} width="100%" height="100%">
         <title>Spotify</title>
         <path
             fill="currentColor"

@@ -49,6 +49,7 @@ export default function Home() {
             );
             // Set new access_token and refresh_token
             response.json().then((response) => {
+                console.log(response);
                 if (response.access_token && response.refresh_token) {
                     const newToken = token
                     newToken.access_token = response.access_token
@@ -124,6 +125,7 @@ export default function Home() {
 
         // Set state when token.access_token is true
         if (_token) {
+            console.log(123);
             spotify.setAccessToken(_token);
             dispatch({
                 type: "SET_ACCESS_TOKEN",

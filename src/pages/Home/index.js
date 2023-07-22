@@ -21,6 +21,7 @@ export default function Home() {
         access_token: null,
         refresh_token: null
     })
+    console.log(token);
     const refreshTime = useRef(null);
 
     const getTokenFromUrl = async () => {
@@ -49,12 +50,12 @@ export default function Home() {
             );
             // Set new access_token and refresh_token
             response.json().then((response) => {
-                console.log(response);
                 if (response.access_token && response.refresh_token) {
-                    const newToken = token
-                    newToken.access_token = response.access_token
-                    newToken.refresh_token = response.refresh_token
-                    setToken(newToken);
+                    setToken({
+                        access_token: response.access_token,
+                        refresh_token: response.refresh_token
+                    });
+
                 }
             });
             // window.location = ""
@@ -81,15 +82,17 @@ export default function Home() {
 
         response.json().then((response) => {
             if (response.access_token) {
-                const newToken = token
-                newToken.access_token = response.access_token
-                setToken(newToken);
+                setToken({
+                    ...token,
+                    access_token: response.access_token
+                });
             }
         });
     };
 
     // useEffect triggers evertime token is changed
     useEffect(() => {
+        console.log(token);
         // A function that is used in useEffect should be defined inside useEffect
         const apiCallErrorHandler = (error) => {
             // If access_token is expired or has not been set --> refresh token

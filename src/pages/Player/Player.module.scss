@@ -1,0 +1,66 @@
+.wrapper {
+    padding: 24px;
+}
+
+.top-discover-playlist {
+    padding-top: 20px;
+    padding-bottom: 24px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 12px;
+}
+
+.discover-thumbnail {
+    height: 232px;
+    width: 232px;
+}
+
+.discover-type {
+    text-transform: capitalize;}
+
+.discover-title {
+    font-size: 9.6rem;
+}
+
+.discover-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.discover-playlists {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    padding-bottom: 50px;
+    grid-gap: 24px
+}
+
+.song-wrapper {
+    padding: 16px;
+    background-color: #181818;
+    border-radius: 10px;
+}
+
+.song-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-thumbnail {
+    margin-bottom: 16px;
+    border-radius: 10px;
+
+}
+
+.song-title {
+    font-size: 1.6rem;
+    padding-bottom: 4px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.song-desc {
+    font-size: 1.4rem;
+    color: var(--text-desc-color);
+}

@@ -16,12 +16,15 @@
     --essential-bright-accent: #1ed760;
     --text-bright-accent: #117a37;
     --text-negative: #d31225;
+    --icon-color: hsla(0,0%,100%,.7);
     
-    --left-sidebar-width: 283px;
+    --general-padding: 8px;
+    --sidebar-width: 280px;
     --header-height: 64px;
     --footer-height: 72px;
     --left-sidebar-padding-right: 24px;
     --left-sidebar-padding-left: 24px;
+    --progress-bar-height: 4px;
 
     --background-noise: url('/assets/images/empty.svg')
 }
@@ -134,4 +137,8 @@ html *::-webkit-scrollbar-track {
 .inline-icon {
     display: flex;
     align-items: center;
+}
+
+.radius {
+    border-radius: 8px;
 }

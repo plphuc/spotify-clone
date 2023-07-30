@@ -1,15 +1,29 @@
 .wrapper {
-
-  --spacer-css: 332px;
-  min-height: 600px;
+  background-color: black;
   height: 100vh;
-  display: flex;
-  // gap: 8px;
 
-  position: relative;
 }
 
 .container {
+  --spacer-css: 332px;
+  min-height: 600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-wrapper {
+  width: var(--sidebar-width);
+  margin-right: var(--general-padding);
+}
+
+.main-container {
+  padding: 8px;
+  display: flex;
+  flex: 1;
+}
+
+.main-content {
   width: 100%;
   background-color: var(--primary-background-color);
   position: relative;
@@ -32,6 +46,7 @@
   background-color: var(--primary-background-color);
   height: var(--header-height);
   width: 100%;
+  border-radius: 8px 8px 0 0;
 
   position: absolute;
   top: 0;
@@ -47,7 +62,8 @@
 .spacer-css {
   height: var(--spacer-css);
   width: 100%;
-  margin-top: calc(var(--header-height)*-1);
+  border-radius: 8px;
+
   background-color: rgb(83, 83, 83);
   position: absolute;
   z-index: 0;
@@ -63,8 +79,8 @@ sidebar-wrapper {
 .footer-wrapper {
   width: 100%;
   height: var(--footer-height);
-  background-color: pink;
 
-  position: absolute;
-  bottom: 0;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
 }

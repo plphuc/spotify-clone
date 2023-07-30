@@ -3,17 +3,19 @@ import classNames from "classnames/bind";
 import styles from "./Footer.module.scss";
 import { LoveIcon, PicInPicIcon } from "~/components/Icons";
 import Button from "~/components/Button";
+import PlayerControl from "~/components/PlayerControl/PlayerControl";
+import MorePlayerControl from "~/components/MorePlayerControl/MorePlayerControl";
 
 const cx = classNames.bind(styles);
 
 export default function Footer() {
     return (
-        <footer className={cx("wrapper")}>
+        <footer className={cx("wrapper") + " radius"}>
             <div className={cx("info-wrapper")}>
                 <img 
                     className={cx('info-image')}
                     src="https://i.scdn.co/image/ab67616d000048515a42123d217f8c248ec1a92d"
-                    alt="haha"
+                    alt="playing-thumbnail"
                 />
                 <span className={cx('info-desc')}>
                     <div style={{fontSize: "14px"}}>FLOWER</div>
@@ -25,7 +27,10 @@ export default function Footer() {
                 </div>
             </div>
             <div className={cx('player-wrapper')}>
-
+                <PlayerControl/>
+            </div>
+            <div className={cx('more-controls-wrapper')}>
+                <MorePlayerControl/>
             </div>
         </footer>
     );

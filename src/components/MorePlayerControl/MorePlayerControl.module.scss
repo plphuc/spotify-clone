@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.icon {
+    background-color: transparent;
+    fill: var(--icon-color);
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+        fill: #fff;
+        }
+}
+
+.volume-wrapper {
+    margin-right: 8px;
+    flex: 0 1 125px;
+    display: flex;
+    justify-content: center;
+}

@@ -10,13 +10,13 @@ import reducer, { initialState } from './utils/reducer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <GlobalStyles>
       <StateProvider initialState={initialState} reducer={reducer}>
         <App />
       </StateProvider>
     </GlobalStyles>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

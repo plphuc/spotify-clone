@@ -1,0 +1,47 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.duration-progress {
+    height: var(--progress-bar-height);
+    border-radius: calc(var(--progress-bar-height)/2);
+    width: 100%;
+    background-color: var(--text-subdued,#6a6a6a);
+
+    position: relative;
+}
+
+.duration-btn {
+    display: none;
+    width: 12px;
+    height: 12px;
+    margin-left: -6px;
+    border-radius: 50%;
+    background-color: #fff;
+
+    position: absolute;
+    left: 100px;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.past-progress {
+    width: 30px;
+    height: inherit;
+    border-radius: calc(var(--progress-bar-height)/2);
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+
+    &:hover {
+        background-color: #1db954;
+
+        & .duration-btn {
+            display: block;
+        }
+
+    }
+}

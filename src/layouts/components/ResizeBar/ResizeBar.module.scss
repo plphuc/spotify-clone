@@ -1,0 +1,10 @@
+.wrapper {
+    height: calc(100% - var(--general-padding)*2);
+    width: 8px;
+
+    position: absolute;
+    left: calc(var(--sidebar-width) + var(--general-padding));
+    z-index: 1000;
+
+    cursor: col-resize;
+}

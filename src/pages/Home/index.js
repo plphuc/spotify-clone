@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import { useContext, useEffect, useRef, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
-
+import { useNavigate } from "react-router-dom";
 import styles from "./Home.module.scss";
 import { useStateValue } from "~/utils/components/StateProvider/StateProvider";
 import Player from "../Player";
@@ -13,16 +13,17 @@ import {
 } from "~/utils/connector/config";
 
 const cx = classNames.bind(styles);
-const spotify = new SpotifyWebApi();
+const discover_playlists = ['60Gb1yMwUUov9d9KiOpsYF', '37i9dQZF1EIXuzAJlE00Hk', '37i9dQZEVXcJCNSgkBeUzw', '37i9dQZF1E35jYVAuNA1GJ', '37i9dQZF1EVKuMoAJjoTIw', '37i9dQZF1EVHGWrwldPRtj', '37i9dQZF1E4xDgR4x4yi5w', '37i9dQZF1EVJSvZp5AOML2', '37i9dQZF1E4AfEUiirXPyP']
 
 export default function Home() {
+    const navigate = new useNavigate()
     const [state, dispatch] = useStateValue();
     const [token, setToken] = useState({
         access_token: null,
         refresh_token: null
     })
-    console.log(token);
     const refreshTime = useRef(null);
+    const spotify = useRef(new SpotifyWebApi());
 
     const getTokenFromUrl = async () => {
         // Get code from url
@@ -58,6 +59,7 @@ export default function Home() {
 
                 }
             });
+            navigate("/")
             // window.location = ""
         } catch (err) {}
     };
@@ -67,6 +69,8 @@ export default function Home() {
         if (!token.refresh_token) {
             token.access_token = null;
         }
+        
+        const tokenStorage  = JSON.parse(localStorage.getItem("value"))
 
         // Call new reponse to refresh access_token (change grant_type to refresh_token)
         // Reponse of requesting a refresh access_token does not have refresh_token
@@ -74,7 +78,7 @@ export default function Home() {
             method: "POST",
             body: new URLSearchParams({
                 grant_type: "refresh_token",
-                refresh_token: token.refresh_token,
+                refresh_token: tokenStorage.refresh_token,
                 client_id: clientId,
                 client_secret: clientSecret,
             }),
@@ -92,7 +96,6 @@ export default function Home() {
 
     // useEffect triggers evertime token is changed
     useEffect(() => {
-        console.log(token);
         // A function that is used in useEffect should be defined inside useEffect
         const apiCallErrorHandler = (error) => {
             // If access_token is expired or has not been set --> refresh token
@@ -112,11 +115,14 @@ export default function Home() {
 
         let _token = token.access_token;
 
-
         //  When page is reloaded (not re-render) but have requested access_token from spotify
         // ---> Get access_token from localStorage
         if (!token.access_token && tokenStorage) {
             _token = tokenStorage
+            setToken({
+                ...token,
+                access_token: _token
+            })
         }
 
         // _token = token.access_token
@@ -128,8 +134,8 @@ export default function Home() {
 
         // Set state when token.access_token is true
         if (_token) {
-            console.log(123);
-            spotify.setAccessToken(_token);
+            spotify.current.setAccessToken(_token);
+
             dispatch({
                 type: "SET_ACCESS_TOKEN",
                 access_token: token.access_token,
@@ -140,48 +146,54 @@ export default function Home() {
                 refresh_token: token.refresh_token,
             });
 
-            spotify.getPlaylist("60Gb1yMwUUov9d9KiOpsYF").then(
-                (response) =>
+            const getData = async () => {
+                discover_playlists.forEach(async (playlistId) => {
+                    await spotify.current.getPlaylist(playlistId).then(
+                        (response) =>
+                            dispatch({
+                                type: "SET_DISCOVER_WEEKLY",
+                                discover_weekly: response,
+                            }),
+                        apiCallErrorHandler
+                    );
+                })
+
+
+                await spotify.current.getMyTopArtists().then(
+                    (response) =>
+                        dispatch({
+                            type: "SET_TOP_ARTISTS",
+                            top_artists: response,
+                        }),
+                    apiCallErrorHandler
+                );
+    
+                await spotify.current.getMe().then((user) => {
                     dispatch({
-                        type: "SET_DISCOVER_WEEKLY",
-                        discover_weekly: response,
-                    }),
-                apiCallErrorHandler
-            );
-
-            spotify.getMyTopArtists().then(
-                (response) =>
+                        type: "SET_USER",
+                        user,
+                    });
+                }, apiCallErrorHandler);
+    
+                await spotify.current.getUserPlaylists().then((playlists) => { 
                     dispatch({
-                        type: "SET_TOP_ARTISTS",
-                        top_artists: response,
-                    }),
-                apiCallErrorHandler
-            );
-
-            dispatch({
-                type: "SET_SPOTIFY",
-                spotify: spotify,
-            });
-
-            spotify.getMe().then((user) => {
-                dispatch({
-                    type: "SET_USER",
-                    user,
-                });
-            }, apiCallErrorHandler);
-
-            spotify.getUserPlaylists().then((playlists) => {
-                dispatch({
-                    type: "SET_PLAYLISTS",
-                    playlists,
-                });
-            }, apiCallErrorHandler);
+                        type: "SET_PLAYLISTS",
+                        playlists,
+                    });
+                }, apiCallErrorHandler);
+            }
+            getData()
         }
     }, [token]);
 
     return (
         <div className={cx("wrapper")}>
-            {token.access_token ? <Player /> : <h1>Now you're wrong</h1>}
+            {/* Must check all state to only trigger when all state is changed
+             (if use only state.user/.../ the others state may have not been get)
+            --> when all state was stored Player will be called */}
+            {state.user && state.playlists 
+            && state.discover_weekly && state.top_artists
+            ? <Player/> : <h1>Now you're wrong</h1>}
         </div>
     );
 }

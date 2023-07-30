@@ -1,7 +1,6 @@
 export const initialState = {
     user: null,
-    playlists: [],
-    spotify: null,
+    playlists: null,
     discover_weekly: null,
     top_artists: null,
     playing: false,
@@ -29,10 +28,32 @@ const reducer = (state, action) => {
             };
 
         case "SET_DISCOVER_WEEKLY":
+            // New discover is an object
+            // Discover will be stored as an Array
+            if (Array.isArray(state.discover_weekly)) {
+
+                let newDiscover = state.discover_weekly
+                for (let playlist of newDiscover) {
+                    // Check if playlist is already added 
+                    if (playlist.id === action.discover_weekly.id) {
+                        return state
+                    }
+                }
+
+                newDiscover.push(action.discover_weekly)
+
+                return {
+                    ...state,
+                    discover_weekly: newDiscover
+                }
+            }
+            
+            let newDiscover = [action.discover_weekly]
             return {
                 ...state,
-                discover_weekly: action.discover_weekly,
-            };
+                discover_weekly: newDiscover
+            }
+           
 
         case "SET_TOP_ARTISTS":
             return {
@@ -50,12 +71,6 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 refresh_token: action.refresh_token,
-            };
-
-        case "SET_SPOTIFY":
-            return {
-                ...state,
-                spotify: action.spotify,
             };
 
         case "SET_PLAYLISTS":

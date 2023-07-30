@@ -3,15 +3,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--primary-background-color);
 }
 
 .info-wrapper {
+    min-width: 180px;
+    width: 30%;
+    padding-left: 1.6rem;
     display: flex;
 }
 
 .info-image {
-border-radius: 4px;
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
 }
 
 .info-desc {
@@ -30,4 +34,14 @@ border-radius: 4px;
 
 .info-icon + .info-icon {
     padding-inline: 16px;
+}
+
+.player-wrapper {
+    width: 40%;
+    max-width: 722px;
+}
+
+.more-controls-wrapper {
+    width: 30%;
+    min-width: 180px;
 }

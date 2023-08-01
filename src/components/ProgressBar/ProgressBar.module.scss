@@ -12,6 +12,32 @@
     background-color: var(--text-subdued,#6a6a6a);
 
     position: relative;
+
+    &:hover .past-progress{
+        background-color: #1db954;
+
+        & .duration-btn {
+            display: block;
+        }
+    }
+    
+    &:active .past-progress{
+        background-color: #1db954;
+
+        & .duration-btn {
+            display: block;
+        }
+
+    }
+}
+
+.past-progress {
+    width: 30px;
+    height: inherit;
+    border-radius: calc(var(--progress-bar-height)/2);
+    background-color: #fff;
+    position: absolute;
+    left: 0;
 }
 
 .duration-btn {
@@ -23,25 +49,7 @@
     background-color: #fff;
 
     position: absolute;
-    left: 100px;
+    left: 30px;
     transform: translateY(-50%);
     top: 50%;
-}
-
-.past-progress {
-    width: 30px;
-    height: inherit;
-    border-radius: calc(var(--progress-bar-height)/2);
-    background-color: #fff;
-    position: absolute;
-    left: 0;
-
-    &:hover {
-        background-color: #1db954;
-
-        & .duration-btn {
-            display: block;
-        }
-
-    }
 }

@@ -6,7 +6,6 @@
 
 .container {
   --spacer-css: 332px;
-  min-height: 600px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -18,6 +17,7 @@
 }
 
 .main-container {
+  height: calc(100vh - 96px);
   padding: 8px;
   display: flex;
   flex: 1;
@@ -60,7 +60,7 @@
 }
 
 .spacer-css {
-  height: var(--spacer-css);
+  height: 100%;
   width: 100%;
   border-radius: 8px;
 

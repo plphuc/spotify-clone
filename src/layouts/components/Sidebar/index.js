@@ -56,20 +56,6 @@ export default function Sidebar({isShowItem}) {
             </a>
         })}
       </div>
-
-      <div className={cx('wrapper-infos')}>
-        <div className={cx('infos')}>
-          <div className={cx('info-item')}><a href="/">Legal</a></div>
-          <div className={cx('info-item')}><a href="/">Privacy Center</a></div>
-          <div className={cx('info-item')}><a href="/">Privacy Policy</a></div>
-          <div className={cx('info-item')}><a href="/">Cookies</a></div>
-          <div className={cx('info-item')}><a href="/">About Ads</a></div>
-          <div className={cx('info-item')}><a href="/">Accessibility</a></div>
-        </div>
-
-        <div className={cx('info-item')}><a href="/" className={cx('underline')}>Cookies</a></div>
-
-      </div>
     </aside> : <CollapseDisplay/>}</>
   );
 }

@@ -7,11 +7,12 @@ import MainSection from "../components/MainSection";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ResizeBar from "../components/ResizeBar/ResizeBar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // import { useEffect, useState } from "react";
 
 const cx = classNames.bind(styles);
 const $ = document.querySelector.bind(document);
+const documentWidth = document.body.clientWidth
 
 export default function MainLayout({ children }) {
     const [isShowItem, setIsShowItem] = useState(true);
@@ -25,9 +26,8 @@ export default function MainLayout({ children }) {
         const container = document.querySelector("." + cx("container"));
         const resizeElement = document.querySelector("#resizeBar");
         const sidebarElement = document.querySelector("#sidebar");
-        const mainContainer = document.querySelector(
-            "." + cx("main-container")
-        );
+        const mainContainer = document.querySelector("." + cx("main-container"));
+        const songContainers = document.querySelectorAll('.grid-song-container')
 
         sidebarElement.style.userSelect = "none";
         sidebarElement.style.pointerEvents = "none";
@@ -52,6 +52,20 @@ export default function MainLayout({ children }) {
             }
             sidebarElement.style.width = widthSize + "px";
             resizeElement.style.left = widthSize + 8 + "px";
+
+            const songContainersWidth = documentWidth - sidebarElement.clientWidth
+            let columnCount = 2
+            if (songContainersWidth > 1230) {columnCount = 7}
+            else if (songContainersWidth > 1150) {columnCount=6}
+            else if (songContainersWidth > 890) {columnCount=5}
+            else if (songContainersWidth > 660) {columnCount=4}
+            else if (songContainersWidth > 470) {columnCount=3}
+
+            console.log(songContainersWidth);
+            
+            songContainers.forEach((songContainer) => {
+                songContainer.style.gridTemplateColumns = `repeat(${columnCount}, minmax(0, 1fr))`
+            })
         }
 
         container.addEventListener("mousemove", handleOnDrag);
@@ -64,8 +78,8 @@ export default function MainLayout({ children }) {
             mainContainer.style.userSelect = "auto";
             mainContainer.style.pointerEvents = "auto";
 
-            container.onmouseup = null;
             container.append(resizeElement);
+            container.onmouseup = null;
         };
     }
 
@@ -75,37 +89,37 @@ export default function MainLayout({ children }) {
     return (
         <div className={cx("wrapper")}>
             <div className={cx("container")}>
-                <div className={cx('main-container')}>
-                <div id="sidebar" className={cx("sidebar-wrapper")}>
-                    <Sidebar isShowItem={isShowItem} />
-                </div>
+                <div id='main-container' className={cx('main-container')}>
+                    <div id="sidebar" className={cx("sidebar-wrapper")}>
+                        <Sidebar isShowItem={isShowItem} />
+                    </div>
 
-                <ResizeBar
-                    handleResize={handleResize}
-                    handleDragStart={handleDragStart}
-                />
+                    <ResizeBar
+                        handleResize={handleResize}
+                        handleDragStart={handleDragStart}
+                    />
 
-                <div className={cx("main-content") + " radius"}>
-                    <div className={cx("spacer-css")}></div>
-                    <div
-                        id="header-wrapper"
-                        className={cx("header-wrapper")}
-                    ></div>
-                    <Header />
-                    <div
-                        className={cx("main-section-wrapper") + " radius"}
-                        onScroll={handleOnScroll}
-                    >
-                        <div className={cx("spacer-header")}></div>
-                        <div className={cx("spacer-wrapper")}>
-                            <MainSection>{children}</MainSection>
+                    <div className={cx("main-content") + " radius"}>
+                        <div className={cx("spacer-css")}></div>
+                        <div
+                            id="header-wrapper"
+                            className={cx("header-wrapper")}
+                        ></div>
+                        <Header />
+                        <div
+                            className={cx("main-section-wrapper") + " radius"}
+                            onScroll={handleOnScroll}
+                        >
+                            <div className={cx("spacer-header")}></div>
+                            <div className={cx("spacer-wrapper")}>
+                                <MainSection>{children}</MainSection>
+                            </div>
                         </div>
                     </div>
-                </div>
-                </div>
-                <div className={cx("footer-wrapper")}>
-                    <Footer />
-                </div>
+                    </div>
+                    <div className={cx("footer-wrapper")}>
+                        <Footer />
+                    </div>
             </div>
             
         </div>
